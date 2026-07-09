@@ -1,0 +1,79 @@
+# 中文菜单 · airdb 基金会
+
+[[docs]]
+  name = "基金会简介"
+  weight = 1
+  url = "/zh/about/intro"
+
+[[docs]]
+  name = "发展路线"
+  weight = 5
+  identifier = "roadmap"
+  url = "/zh/about/roadmap"
+
+[[docs]]
+  name = "人道主义救援"
+  weight = 10
+  identifier = "relief"
+  url = "/zh/projects/relief"
+
+[[docs]]
+  name = "寻亲回家"
+  weight = 11
+  identifier = "reunion"
+  url = "/zh/projects/reunion"
+
+[[docs]]
+  name = "教育支持"
+  weight = 12
+  identifier = "education"
+  url = "/zh/projects/education"
+
+[[docs]]
+  name = "开源科技"
+  weight = 13
+  identifier = "opensource"
+  post = "break"
+  url = "/zh/projects/opensource"
+
+[[docs]]
+  name = "信息公开"
+  weight = 20
+  identifier = "transparency"
+  url = "/transparency/"
+
+[[docs]]
+  name = "参与我们"
+  weight = 100
+  identifier = "contribute"
+  url = "/zh/about/contribute"
+
+[[global]]
+  name = "基金会动态"
+  weight = 1
+  identifier = "news"
+  url = "/zh/news/"
+
+[[global]]
+  name = "关于基金会"
+  weight = 5
+  identifier = "docs"
+  url = "/zh/about/"
+
+[[global]]
+  name = "项目方向"
+  weight = 10
+  identifier = "projects"
+  url = "/zh/projects/"
+
+[[global]]
+  name = "信息公开"
+  weight = 20
+  identifier = "transparency"
+  url = "/transparency/"
+
+[[global]]
+  name = "参与我们"
+  weight = 30
+  identifier = "join"
+  url = "/join/"

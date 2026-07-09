@@ -1,0 +1,352 @@
+---
+// airdb.fund — airdb 基金会首页：人道救援、寻亲回家、教育支持，公开透明。
+import ProductLayout from "../layouts/ProductLayout.astro";
+
+const STATS = [
+  { value: "4", label: "核心项目方向" },
+  { value: "100%", label: "项目与成本公开" },
+  { value: "季度", label: "账目披露频率" },
+  { value: "第 1 阶段", label: "自有基金起步" },
+];
+
+const PROGRAMS = [
+  {
+    no: "01",
+    title: "人道主义救援",
+    copy: "面向突发灾害与困境人群的紧急援助：物资、资金与协作支持。规模从小做起，每一笔支出都有据可查。",
+  },
+  {
+    no: "02",
+    title: "寻亲回家",
+    copy: "支持失散家庭的寻人与团聚，与「宝贝回家」等公益寻亲平台协作，提供线索整理、信息扩散与必要的经费支持。",
+  },
+  {
+    no: "03",
+    title: "教育支持",
+    copy: "面向中学生、高中生与大学生的教育资助。前期以大学阶段为主：助学金、生活补助与成长陪伴，帮助学生安心完成学业。",
+  },
+  {
+    no: "04",
+    title: "开源科技",
+    copy: "像 Linux 基金会那样支持开放技术：资助 AI 等领域的开源项目与开发者，让有公共价值的技术基础设施长期有人维护。",
+  },
+];
+
+const COMMITMENTS = [
+  "项目立项书公开：为什么做、做什么、预算多少",
+  "成本逐笔公开：支出明细、凭证与去向可查",
+  "进度定期披露：按季度更新账目与项目进展",
+  "问题不回避：做得不好的地方，同样公开说明",
+];
+
+const ROADMAP = [
+  {
+    name: "阶段一 · 自有基金",
+    period: "当前阶段",
+    tagline: "用自有资金把项目跑通、跑实。",
+    features: [
+      "以小规模项目验证流程",
+      "建立立项、执行、披露的规范",
+      "公开第一批项目与账目",
+      "不对外募集资金",
+    ],
+    cta: "查看公开账目",
+    href: "/transparency/#ledger",
+    featured: true,
+    flag: "进行中",
+  },
+  {
+    name: "阶段二 · 项目开放",
+    period: "规划中",
+    tagline: "把项目开放出去，让更多人了解。",
+    features: [
+      "项目档案完整对外公开",
+      "邀请志愿者参与执行",
+      "与公益组织建立协作",
+      "接受社会监督与建议",
+    ],
+    cta: "了解参与方式",
+    href: "/join/",
+    featured: false,
+  },
+  {
+    name: "阶段三 · 公众参与",
+    period: "远期目标",
+    tagline: "在合规前提下，开放公众参与和支持。",
+    features: [
+      "完善治理与监督机制",
+      "探索合规的公众参与途径",
+      "更大规模的救援与资助",
+      "成为值得信任的爱心基金会",
+    ],
+    cta: "关注我们的进展",
+    href: "/transparency/",
+    featured: false,
+  },
+];
+
+const DOCS = [
+  { title: "公开账目", copy: "按季度披露的收支明细：每一笔钱从哪里来、花到哪里去。", href: "/transparency/#ledger", tag: "账目" },
+  { title: "项目档案", copy: "每个项目的立项书、预算、执行记录与阶段总结。", href: "/transparency/#projects", tag: "档案" },
+  { title: "披露制度", copy: "我们承诺公开什么、多久公开一次、以什么形式公开。", href: "/transparency/#policy", tag: "制度" },
+  { title: "参与我们", copy: "志愿者、公益伙伴、监督者——了解现在可以怎样参与。", href: "/join/", tag: "参与" },
+];
+
+const TABS = [
+  { id: "expense", label: "支出明细" },
+  { id: "income", label: "资金投入" },
+  { id: "progress", label: "项目进度" },
+];
+---
+
+<ProductLayout
+  title="airdb 基金会 — 人道救援 · 寻亲回家 · 教育支持 · 开源科技"
+  description="airdb 基金会从自有基金起步，专注人道主义救援、寻亲回家、教育支持与开源科技资助。项目公开、成本公开，邀请更多人了解并参与。"
+  path="/"
+>
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-field" aria-hidden="true"></div>
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">airdb 基金会 · 自有基金起步的公益实践</p>
+        <h1 class="reveal">
+          把每一分善意，<br />
+          花在<span class="ital">看得见</span>的地方。
+        </h1>
+        <p class="lede reveal">
+          我们专注四件事：人道主义救援、寻亲回家、教育支持、开源科技。
+          从自有基金开始，一点点把项目做实、做大——项目公开、成本公开，欢迎监督。
+        </p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-solid" href="#programs">了解我们的项目</a>
+          <a class="btn btn-ghost" href="/transparency/">查看公开账目</a>
+        </div>
+        <p class="hero-note reveal">
+          现阶段不对外募集资金 · 账目按季度公开 · <span class="mono">airdb.fund</span>
+        </p>
+      </div>
+
+      <figure class="terminal reveal" aria-label="公开账本示例">
+        <figcaption class="terminal-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="terminal-title mono">公开账本 · 季度披露（示例）</span>
+        </figcaption>
+        <pre class="mono"><code><span class="t-dim"># 2026 年第二季度 · 支出摘要（示例数据）</span>
+
+<span class="t-key">教育支持 · 大学助学</span>   <span class="t-num">¥ 12,000.00</span>  <span class="t-str">已拨付 3 人</span>
+<span class="t-key">救援物资 · 应急储备</span>   <span class="t-num">¥  8,450.00</span>  <span class="t-str">已入库</span>
+<span class="t-key">寻亲协作 · 信息支持</span>   <span class="t-num">¥  2,300.00</span>  <span class="t-str">进行中</span>
+<span class="t-key">开源资助 · AI 项目</span>   <span class="t-num">¥  5,000.00</span>  <span class="t-str">已到账</span>
+<span class="t-key">运营成本 · 全部公开</span>   <span class="t-num">¥  1,120.00</span>  <span class="t-str">明细可查</span>
+
+<span class="t-dim">每一笔支出附凭证与去向，正式账目以信息公开页为准。</span></code></pre>
+      </figure>
+    </div>
+
+    <div class="shell">
+      <dl class="stat-strip reveal">
+        {STATS.map((s) => (
+          <div class="stat">
+            <dt>{s.value}</dt>
+            <dd>{s.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ PROGRAMS ============ -->
+  <section class="platform" id="programs">
+    <div class="shell">
+      <header class="section-head">
+        <p class="eyebrow">项目方向</p>
+        <h2>四件事，<span class="ital">认真做。</span></h2>
+        <p class="section-lede">
+          我们不求一开始做得多大，只求每个项目都有清楚的立项、透明的执行和可以复盘的结果。
+        </p>
+      </header>
+      <div class="cap-grid">
+        {PROGRAMS.map((c) => (
+          <article class="cap-card">
+            <span class="cap-no">{c.no}</span>
+            <h3>{c.title}</h3>
+            <p>{c.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRANSPARENCY ============ -->
+  <section class="api" id="transparency">
+    <div class="shell api-grid">
+      <div class="api-copy">
+        <p class="eyebrow eyebrow-light">透明公开</p>
+        <h2>公开项目，<span class="ital">公开成本。</span></h2>
+        <p>
+          信任不是宣传出来的，是账目一笔一笔攒出来的。
+          我们把项目怎么立项、钱怎么花、进展到哪一步，都放在明面上。
+        </p>
+        <ul class="api-points">
+          {COMMITMENTS.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+
+      <div class="code-panel">
+        <div class="code-tabs" role="tablist" aria-label="公开账本示例">
+          {TABS.map((t, i) => (
+            <button
+              class:list={["mono", i === 0 && "active"]}
+              role="tab"
+              id={`tab-${t.id}`}
+              aria-controls={`panel-${t.id}`}
+              aria-selected={i === 0 ? "true" : "false"}
+              tabindex={i === 0 ? 0 : -1}
+              data-tab={t.id}
+            >{t.label}</button>
+          ))}
+        </div>
+        <pre class="mono code-sample active" role="tabpanel" id="panel-expense" aria-labelledby="tab-expense" tabindex="0"><code><span class="t-dim"># 支出明细（示例数据）</span>
+
+<span class="t-key">2026-05-12</span>  助学金拨付 · 学生 A   <span class="t-num">¥ 4,000.00</span>
+<span class="t-key">2026-05-12</span>  助学金拨付 · 学生 B   <span class="t-num">¥ 4,000.00</span>
+<span class="t-key">2026-06-03</span>  救援物资采购          <span class="t-num">¥ 8,450.00</span>
+<span class="t-key">2026-06-20</span>  寻亲信息推广          <span class="t-num">¥ 2,300.00</span>
+<span class="t-key">2026-06-28</span>  开源项目资助 · AI     <span class="t-num">¥ 5,000.00</span>
+
+<span class="t-dim">凭证编号与去向见信息公开页。</span></code></pre>
+        <pre class="mono code-sample" role="tabpanel" id="panel-income" aria-labelledby="tab-income" tabindex="0" hidden><code><span class="t-dim"># 资金投入（示例数据）</span>
+
+<span class="t-key">2026-04-01</span>  自有基金注入 · 第二季度  <span class="t-num">¥ 30,000.00</span>
+
+<span class="t-dim">现阶段资金全部来自自有基金，
+不接受外部捐赠，不对外募集。</span></code></pre>
+        <pre class="mono code-sample" role="tabpanel" id="panel-progress" aria-labelledby="tab-progress" tabindex="0" hidden><code><span class="t-dim"># 项目进度（示例数据）</span>
+
+<span class="t-key">教育支持</span>  3 名大学生已完成资助对接  <span class="t-str">进行中</span>
+<span class="t-key">救援储备</span>  首批应急物资完成入库      <span class="t-str">已完成</span>
+<span class="t-key">寻亲协作</span>  与寻亲平台建立协作流程    <span class="t-str">进行中</span>
+<span class="t-key">开源科技</span>  首个 AI 开源项目完成资助  <span class="t-str">进行中</span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP ============ -->
+  <section class="pricing" id="roadmap">
+    <div class="shell">
+      <header class="section-head">
+        <p class="eyebrow">发展路线</p>
+        <h2>一点点做大，<span class="ital">一步步开放。</span></h2>
+        <p class="section-lede">
+          自有基金规模有限，所以我们更看重把流程做对：先跑通，再开放，最后邀请更多人参与。
+        </p>
+      </header>
+      <div class="plan-grid">
+        {ROADMAP.map((p) => (
+          <article class:list={["plan", p.featured && "plan-featured"]}>
+            {p.featured && <span class="plan-flag">{p.flag}</span>}
+            <h3>{p.name}</h3>
+            <p class="plan-price">
+              <strong>{p.period}</strong>
+            </p>
+            <p class="plan-tagline">{p.tagline}</p>
+            <ul>
+              {p.features.map((f) => <li>{f}</li>)}
+            </ul>
+            <a class:list={["btn", p.featured ? "btn-solid" : "btn-ghost", "btn-block"]} href={p.href}>
+              {p.cta}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPEN DOCS ============ -->
+  <section class="docs" id="docs">
+    <div class="shell">
+      <header class="section-head">
+        <p class="eyebrow">信息公开</p>
+        <h2>了解我们，从<span class="ital">看账本</span>开始。</h2>
+      </header>
+      <div class="docs-grid">
+        {DOCS.map((d) => (
+          <a class="doc-card" href={d.href}>
+            <span class="doc-tag">{d.tag}</span>
+            <h3>{d.title} <span aria-hidden="true">→</span></h3>
+            <p>{d.copy}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band">
+    <div class="shell cta-inner">
+      <h2>做一个<span class="ital">值得信任</span>的爱心基金会。</h2>
+      <p>无论是想做志愿者、建立协作，还是单纯想监督我们——都欢迎。</p>
+      <div class="hero-actions">
+        <a class="btn btn-paper" href="/join/">参与我们</a>
+        <a class="btn btn-ghost-light" href="mailto:info@airdb.com">写邮件给我们</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Accessible tabs: click + arrow-key navigation, roving tabindex
+    const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>(".code-tabs [role=tab]"));
+    const panels = Array.from(document.querySelectorAll<HTMLElement>(".code-sample"));
+
+    function selectTab(tab: HTMLButtonElement) {
+      tabs.forEach((t) => {
+        const selected = t === tab;
+        t.classList.toggle("active", selected);
+        t.setAttribute("aria-selected", String(selected));
+        t.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach((p) => {
+        const show = p.id === `panel-${tab.dataset.tab}`;
+        p.classList.toggle("active", show);
+        p.hidden = !show;
+      });
+      tab.focus();
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("keydown", (e) => {
+        const last = tabs.length - 1;
+        let target = -1;
+        if (e.key === "ArrowRight") target = i === last ? 0 : i + 1;
+        else if (e.key === "ArrowLeft") target = i === 0 ? last : i - 1;
+        else if (e.key === "Home") target = 0;
+        else if (e.key === "End") target = last;
+        if (target >= 0) {
+          e.preventDefault();
+          selectTab(tabs[target]);
+        }
+      });
+    });
+
+    // Scroll-triggered reveals outside the hero
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.01, rootMargin: "0px 0px -8% 0px" }
+    );
+    document
+      .querySelectorAll(".cap-card, .plan, .doc-card, .section-head")
+      .forEach((el) => {
+        el.classList.add("will-reveal");
+        observer.observe(el);
+      });
+  </script>
+</ProductLayout>

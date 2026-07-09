@@ -1,0 +1,148 @@
+---
+import "../styles/product.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path for canonical URL, e.g. "/transparency/" */
+  path?: string;
+  ogImage?: string;
+}
+
+const { title, description, path = "/", ogImage = "/og/home.png" } = Astro.props;
+const site = Astro.site ?? new URL("https://airdb.fund");
+const canonical = new URL(path, site).href;
+const ogImageUrl = new URL(ogImage, site).href;
+
+const NAV = [
+  { label: "项目方向", href: "/#programs" },
+  { label: "透明公开", href: "/#transparency" },
+  { label: "发展路线", href: "/#roadmap" },
+  { label: "信息公开", href: "/transparency/" },
+];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  name: "airdb 基金会",
+  alternateName: "Airdb Foundation",
+  url: site.href,
+  logo: new URL("/icons/icon-512.png", site).href,
+  description:
+    "airdb 基金会专注人道主义救援、寻亲回家、教育支持与开源科技资助，从自有基金起步，公开项目与成本，邀请更多人了解并参与。",
+  contactPoint: { "@type": "ContactPoint", contactType: "general inquiries", email: "info@airdb.com" },
+});
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="airdb 基金会" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icons/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="preload" href="/fonts/fraunces-var-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/fraunces-var-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-sans-var-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-mono-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+
+    <header class="topbar">
+      <div class="shell topbar-inner" id="topbar">
+        <a class="wordmark" href="/">
+          <span class="wordmark-glyph" aria-hidden="true">▚</span>
+          air<em>db</em> 基金会
+        </a>
+        <nav class="topnav" id="site-nav" aria-label="主导航">
+          {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+        <button class="nav-toggle mono" aria-expanded="false" aria-controls="site-nav">菜单</button>
+        <div class="topbar-actions">
+          <a class="group-link" href="/cc/">EN</a>
+          <a class="btn btn-solid btn-sm" href="/join/">参与我们</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-grid">
+        <div class="footer-brand">
+          <p class="wordmark">air<em>db</em> 基金会</p>
+          <p>
+            我们从自有基金起步，专注人道主义救援、寻亲回家、教育支持与开源科技。
+            项目公开、成本公开，一点点把事情做实、做大。
+          </p>
+        </div>
+        <div class="footer-col">
+          <h3>项目</h3>
+          <a href="/#programs">人道主义救援</a>
+          <a href="/#programs">寻亲回家</a>
+          <a href="/#programs">教育支持</a>
+          <a href="/#programs">开源科技</a>
+        </div>
+        <div class="footer-col">
+          <h3>公开</h3>
+          <a href="/transparency/">信息公开</a>
+          <a href="/transparency/#ledger">公开账目</a>
+          <a href="/transparency/#projects">项目档案</a>
+        </div>
+        <div class="footer-col">
+          <h3>参与</h3>
+          <a href="/join/">成为志愿者</a>
+          <a href="/join/">公益伙伴合作</a>
+          <a href="mailto:info@airdb.com">联系我们</a>
+        </div>
+      </div>
+      <div class="shell footer-legal">
+        <span>© 2026 airdb 基金会 · 保留所有权利</span>
+        <a href="mailto:info@airdb.com">info@airdb.com</a>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+      const bar = document.getElementById("topbar");
+      toggle?.addEventListener("click", () => {
+        const open = bar?.classList.toggle("nav-open") ?? false;
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.textContent = open ? "关闭" : "菜单";
+      });
+      // Close the mobile panel after navigating to an anchor
+      document.querySelectorAll("#site-nav a").forEach((a) =>
+        a.addEventListener("click", () => {
+          bar?.classList.remove("nav-open");
+          toggle?.setAttribute("aria-expanded", "false");
+          if (toggle) toggle.textContent = "菜单";
+        })
+      );
+    </script>
+  </body>
+</html>

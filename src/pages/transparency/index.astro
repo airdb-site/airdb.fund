@@ -1,0 +1,147 @@
+---
+import ProductLayout from "../../layouts/ProductLayout.astro";
+
+const LEDGER = [
+  { date: "2026-04-01", item: "自有基金注入（第二季度）", type: "收入", amount: "¥ 30,000.00", status: "示例" },
+  { date: "2026-05-12", item: "教育支持 · 大学助学金拨付（2 人）", type: "支出", amount: "¥ 8,000.00", status: "示例" },
+  { date: "2026-06-03", item: "人道救援 · 应急物资采购", type: "支出", amount: "¥ 8,450.00", status: "示例" },
+  { date: "2026-06-20", item: "寻亲回家 · 信息扩散与协作支持", type: "支出", amount: "¥ 2,300.00", status: "示例" },
+  { date: "2026-06-30", item: "运营成本（网站、通讯、事务）", type: "支出", amount: "¥ 1,120.00", status: "示例" },
+];
+
+const PROJECTS = [
+  { id: "edu/university-grant", desc: "大学阶段助学金：面向家庭困难在校大学生的定向资助", cycle: "按学期", status: "筹备中" },
+  { id: "relief/emergency-kit", desc: "应急救援物资储备：面向突发灾害的第一批响应物资", cycle: "持续", status: "筹备中" },
+  { id: "reunion/collaboration", desc: "寻亲协作：与宝贝回家等平台协作的寻人信息支持", cycle: "持续", status: "筹备中" },
+  { id: "edu/mentorship", desc: "成长陪伴：为受助学生提供学业与职业发展陪伴", cycle: "按学年", status: "规划中" },
+  { id: "oss/ai-grant", desc: "开源科技资助：面向 AI 等领域开源项目与开发者的定向资助", cycle: "按年度", status: "规划中" },
+];
+
+const POLICY = [
+  { sig: "项目立项书", desc: "每个项目启动前公开：背景、目标、预算、执行人与评估方式。" },
+  { sig: "季度账目", desc: "每季度结束后 30 天内公开收支明细，附凭证编号与资金去向。" },
+  { sig: "项目进展", desc: "执行中的项目按季度更新进展；重大节点（如拨付、结项）及时披露。" },
+  { sig: "年度总结", desc: "每年公开一次全年总结：做成了什么、没做成什么、明年怎么改。" },
+  { sig: "问题披露", desc: "执行偏差、预算超支、判断失误——同样公开说明原因与改进措施。" },
+  { sig: "隐私保护", desc: "公开以不伤害受助人为前提：涉及未成年人与受助家庭的信息会做匿名化处理。" },
+];
+---
+
+<ProductLayout
+  title="信息公开 — airdb 基金会"
+  description="airdb 基金会信息公开：披露制度、公开账目、项目档案与年度总结。项目公开、成本公开，欢迎监督。"
+  path="/transparency/"
+>
+  <div class="shell page-hero">
+    <p class="notice">筹备阶段 · 以下账目与项目为示例格式，正式数据将随首批项目落地一并公开</p>
+    <h1>信息公开</h1>
+    <p class="lede">
+      我们承诺项目公开、成本公开。这一页是承诺的落脚点：
+      披露制度、账目明细、项目档案都在这里。有疑问，写信给
+      <a href="mailto:info@airdb.com">info@airdb.com</a>。
+    </p>
+    <nav class="toc" aria-label="本页目录">
+      <a href="#policy">披露制度</a>
+      <a href="#ledger">公开账目</a>
+      <a href="#projects">项目档案</a>
+      <a href="#supervision">监督我们</a>
+    </nav>
+  </div>
+
+  <div class="shell doc-body">
+    <section class="doc-section" id="policy">
+      <h2><span class="sec-no">01 · 制度</span>披露制度</h2>
+      <p>
+        公开不是一次性的姿态，而是长期的节奏。我们承诺按以下方式持续披露：
+      </p>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr><th scope="col">披露内容</th><th scope="col">说明</th></tr>
+          </thead>
+          <tbody>
+            {POLICY.map((e) => (
+              <tr><td>{e.sig}</td><td>{e.desc}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="ledger">
+      <h2><span class="sec-no">02 · 账目</span>公开账目</h2>
+      <p>
+        每一笔收入与支出，按时间逐笔列出。现阶段资金全部来自自有基金，
+        不接受外部捐赠、不对外募集。下表为披露格式示例：
+      </p>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">日期</th>
+              <th scope="col">事项</th>
+              <th scope="col">类型</th>
+              <th scope="col">金额</th>
+              <th scope="col">状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            {LEDGER.map((d) => (
+              <tr>
+                <td>{d.date}</td>
+                <td>{d.item}</td>
+                <td>{d.type}</td>
+                <td>{d.amount}</td>
+                <td><span class="pill">{d.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p>
+        正式披露时，每笔支出会附凭证编号；大额支出（如物资采购、助学金拨付）另附说明。
+      </p>
+    </section>
+
+    <section class="doc-section" id="projects">
+      <h2><span class="sec-no">03 · 档案</span>项目档案</h2>
+      <p>
+        每个项目一份档案：立项书、预算、执行记录、阶段总结。首批项目正在筹备，档案将陆续公开：
+      </p>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">项目编号</th>
+              <th scope="col">说明</th>
+              <th scope="col">周期</th>
+              <th scope="col">状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            {PROJECTS.map((d) => (
+              <tr>
+                <td>{d.id}</td>
+                <td>{d.desc}</td>
+                <td>{d.cycle}</td>
+                <td><span class:list={["pill", d.status === "筹备中" && "pill-live"]}>{d.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="supervision">
+      <h2><span class="sec-no">04 · 监督</span>监督我们</h2>
+      <p>
+        公开的意义在于有人看。如果你发现账目有疑问、项目执行与披露不符，
+        或者有更好的建议，请直接联系 <a href="mailto:info@airdb.com">info@airdb.com</a>，
+        我们会在信息公开页回应共性问题。
+      </p>
+      <p>
+        想更近距离地了解和参与，请看<a href="/join/">参与我们</a>。
+      </p>
+    </section>
+  </div>
+</ProductLayout>

@@ -1,0 +1,84 @@
+---
+import ProductLayout from "../../layouts/ProductLayout.astro";
+---
+
+<ProductLayout
+  title="参与我们 — airdb 基金会"
+  description="参与 airdb 基金会：成为志愿者、建立公益协作，或以监督者的身份关注我们。留下联系方式，我们会尽快回复。"
+  path="/join/"
+>
+  <div class="shell page-hero">
+    <p class="notice">基金会处于第一阶段 · 现阶段不对外募集资金，参与以志愿协作与监督为主</p>
+    <h1>参与我们</h1>
+    <p class="lede">
+      告诉我们你是谁、想以什么方式参与。
+      无论是投入时间的志愿者、寻求协作的公益组织，还是想监督我们的普通人，都欢迎。
+    </p>
+  </div>
+
+  <div class="shell form-wrap">
+    <form
+      name="join-us"
+      method="POST"
+      action="/join/thanks/"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      class="form-grid"
+    >
+      <input type="hidden" name="form-name" value="join-us" />
+      <p hidden aria-hidden="true">
+        <label>请勿填写此字段：<input name="bot-field" /></label>
+      </p>
+
+      <div class="field">
+        <label for="name">称呼 <span class="req">*</span></label>
+        <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="email">邮箱 <span class="req">*</span></label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+        <p class="hint">我们的回复会发到这里。</p>
+      </div>
+
+      <div class="field">
+        <label for="org">所在组织（可选）</label>
+        <input id="org" name="org" type="text" autocomplete="organization" />
+      </div>
+
+      <div class="field">
+        <label for="role">你想以什么方式参与 <span class="req">*</span></label>
+        <select id="role" name="role" required>
+          <option value="volunteer">志愿者（时间与技能）</option>
+          <option value="partner">公益组织 / 机构协作</option>
+          <option value="supervisor">监督者 / 关注进展</option>
+          <option value="other">其他（在下方说明）</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">想说的话</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="例如：我是一名在校大学生，想参与寻亲信息整理的志愿工作，每周可投入 4 小时。"
+        ></textarea>
+      </div>
+
+      <button class="btn btn-solid" type="submit">提交</button>
+      <p class="hint">
+        更习惯写邮件？请发 <a href="mailto:info@airdb.com">info@airdb.com</a>。
+        你的联系方式仅用于回复，不会对外提供。
+      </p>
+    </form>
+  </div>
+
+  <script>
+    // Pre-select the role from ?role= links elsewhere on the site
+    const role = new URLSearchParams(location.search).get("role");
+    const select = document.getElementById("role") as HTMLSelectElement | null;
+    if (role && select && [...select.options].some((o) => o.value === role)) {
+      select.value = role;
+    }
+  </script>
+</ProductLayout>
