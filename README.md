@@ -1,34 +1,30 @@
-# airdb.net
+# airdb.fund — AirDB 公益基金官网
 
-这个仓库现在已经切换为一个基于 Astro 的静态站点，内容仍然主要来自 `content/` 目录里的 Markdown。
+AirDB 公益基金的官网(Astro 静态站点,中文):介绍项目方向、志愿者招募与账目透明披露。
+首页承诺"项目与成本 100% 公开、季度披露账目",披露数据以 `transparency` 页为准。
+
+> 注意:`src/pages/transparency/index.astro` 里的账目条目目前标注为「示例」,
+> 上线真实披露前需要替换为实际数据。
 
 ## 开发
 
 ```bash
 pnpm install
-pnpm dev
+pnpm dev      # 或 make run
+pnpm build    # 构建产物输出到 dist/
 ```
 
-## 构建
+## 目录结构
 
-```bash
-pnpm build
-```
+- `src/pages/index.astro` — 首页(项目方向 / 数据概览)
+- `src/pages/join/` — 志愿者 / 合作申请
+- `src/pages/transparency/` — 账目透明披露
+- `src/layouts/ProductLayout.astro` — 站点外壳
+- `src/styles/product.css` — 设计体系
+- `static/` — 静态资源(`publicDir`)
 
-构建产物输出到 `dist/`，Netlify 也已经切换为 Astro 的构建命令和输出目录。
+## 归档
 
-## 内容来源
-
-- 页面内容保留在 `content/`
-- 菜单配置位于 `src/config/menus/`
-- 静态资源位于 `static/`
-
-## 迁移说明
-
-当前迁移版本重点完成了这些事情：
-
-- 从 Hugo 构建流程切换到 Astro
-- 用 Astro 动态路由承接现有 Markdown 页面
-- 更新 Netlify 与 Makefile，使部署和本地开发不再依赖 Hugo
-- 清理 Hugo 遗留内容（示例文档页面、shortcode 兼容层、英文示例菜单等）
-- 采用 `pnpm` 作为默认包管理器
+原公益组织站点(Hugo 迁移内容、`content/` Markdown、BaseLayout 渲染链路、
+中文菜单与路由映射)已整体移入 `archive/legacy-nonprofit/`,不参与构建。
+如需恢复参考,直接从该目录取。
