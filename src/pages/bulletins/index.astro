@@ -1,0 +1,103 @@
+---
+import ProductLayout from "../../layouts/ProductLayout.astro";
+
+const ISSUES = [
+  {
+    no: "001",
+    date: "2026-07-14",
+    topic: "筹备期自查：披露框架与网站内容核查",
+    status: "本期",
+  },
+];
+---
+
+<ProductLayout
+  title="监督简报 — airdb 基金会"
+  description="airdb 基金会监督简报：按期编号发布的自查与回访记录。第 001 期：筹备期披露框架自查。"
+  path="/bulletins/"
+>
+  <div class="shell page-hero">
+    <p class="notice">按期编号 · 每期一个核查主题 · 从筹备期第 001 期开始</p>
+    <h1>监督简报</h1>
+    <p class="lede">
+      监督不能只等别人来做。这里按期发布我们的自查与回访记录：查了什么、
+      发现了什么问题、改了没有。编号连续，缺期即失信。
+    </p>
+    <nav class="toc" aria-label="本页目录">
+      <a href="#index">简报目录</a>
+      <a href="#issue-001">第 001 期</a>
+    </nav>
+  </div>
+
+  <div class="shell doc-body">
+    <section class="doc-section" id="index">
+      <h2><span class="sec-no">目录</span>简报目录</h2>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr><th scope="col">期号</th><th scope="col">日期</th><th scope="col">核查主题</th><th scope="col">状态</th></tr>
+          </thead>
+          <tbody>
+            {ISSUES.map((i) => (
+              <tr>
+                <td><a href={`#issue-${i.no}`}>第 {i.no} 期</a></td>
+                <td>{i.date}</td>
+                <td>{i.topic}</td>
+                <td><span class="pill pill-live">{i.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="issue-001">
+      <h2><span class="sec-no">第 001 期 · 2026-07-14</span>筹备期自查：披露框架与网站内容核查</h2>
+
+      <h3>本期核查范围</h3>
+      <p>
+        基金会尚无进行中的资助项目，本期对象是我们自己的披露框架：官网全部页面的内容真实性、
+        承诺一致性，以及披露基础设施是否就位。
+      </p>
+
+      <h3>已就位的部分</h3>
+      <p>
+        披露制度六条（含问题披露与隐私保护条款）已公开；公开账目与项目档案的披露格式已上线，
+        全部数据均逐处标注「示例」；对标与标准页公开了我们向谁看齐、按什么标准接受检验；
+        风险与应对页预先写下了风险清单与披露边界；公众关切页预答了六个最常见的质疑。
+      </p>
+
+      <h3>本期发现的问题与整改</h3>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr><th scope="col">发现</th><th scope="col">性质</th><th scope="col">整改</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>站点的应用清单（manifest）与社交分享图沿用了关联产品站点的素材，品牌身份错挂</td>
+              <td>内容错误</td>
+              <td>已更正：清单与分享图均已替换为基金会自己的身份与视觉</td>
+            </tr>
+            <tr>
+              <td>「参与我们」页的表单在当前托管环境下提交不可达，填写内容不会被送出</td>
+              <td>功能缺陷</td>
+              <td>整改中；页面已注明邮件通道（info@airdb.com）可正常使用，修复完成后在下一期简报确认</td>
+            </tr>
+            <tr>
+              <td>法律身份的表述此前未在站内正面说明</td>
+              <td>披露缺失</td>
+              <td>已在公众关切页正面回答，登记进展将持续更新</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>下期预告</h3>
+      <p>
+        第 002 期将核查首批项目的立项材料是否达到披露制度要求（立项书、预算、评估方式齐备），
+        并回访本期「整改中」事项。发布时间不晚于首批项目立项后 30 天。
+      </p>
+    </section>
+  </div>
+</ProductLayout>
