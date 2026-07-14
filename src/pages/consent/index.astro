@@ -1,0 +1,96 @@
+---
+import ProductLayout from "../../layouts/ProductLayout.astro";
+
+const PRINCIPLES = [
+  {
+    p: "援助不以分享为条件",
+    d: "是否同意公开自己的故事或照片，与是否获得资助完全无关。同意书里明文写这一条，并当面口头说明。",
+  },
+  {
+    p: "白话同意，不用术语",
+    d: "同意书用日常语言写；对不便阅读的当事人逐句读给对方听。签字前先让对方看「公开」在网上实际长什么样。",
+  },
+  {
+    p: "未成年人双重同意",
+    d: "涉及未成年人时，本人与监护人须分别同意；任何一方不同意即不公开。",
+  },
+  {
+    p: "随时可以反悔",
+    d: "同意可以随时撤回，撤回后我们在合理时间内下线相关内容，不追问原因。",
+  },
+  {
+    p: "拒绝率也是公开的一部分",
+    d: "我们会在年度总结中公布「被邀请分享的受助者中，拒绝了多少」——拒绝率高低本身，就是同意机制是否真实的证据。",
+  },
+];
+---
+
+<ProductLayout
+  title="受助者信息与同意机制 — airdb 基金会"
+  description="airdb 基金会受助者信息使用规则：援助不以分享为条件、白话同意、未成年人双重同意、随时可撤回、拒绝率公开。"
+  path="/consent/"
+>
+  <div class="shell page-hero">
+    <p class="notice">自发布之日起对我们生效 · 任何受助者故事发布前须走完本页流程</p>
+    <h1>受助者信息与同意机制</h1>
+    <p class="lede">
+      受助者的故事能让公开更有温度，但故事属于当事人，不属于我们。
+      这一页规定我们在什么条件下才能使用受助者的信息——做不到，就不用。
+    </p>
+    <nav class="toc" aria-label="本页目录">
+      <a href="#principles">五条原则</a>
+      <a href="#template">同意书模板</a>
+      <a href="#scope">适用范围</a>
+    </nav>
+  </div>
+
+  <div class="shell doc-body">
+    <section class="doc-section" id="principles">
+      <h2><span class="sec-no">01 · 原则</span>五条原则</h2>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr><th scope="col">原则</th><th scope="col">具体做法</th></tr>
+          </thead>
+          <tbody>
+            {PRINCIPLES.map((x) => (
+              <tr><td>{x.p}</td><td>{x.d}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="template">
+      <h2><span class="sec-no">02 · 模板</span>同意书模板（全文公开）</h2>
+      <p>以下是我们将使用的同意书正文。公开模板，请你监督我们是否照做：</p>
+      <blockquote>
+        <p>
+          airdb 基金会想把与你相关的一段经历（文字/照片，见附页勾选项）放在我们的网站上，
+          让更多人了解这类项目在做什么。
+        </p>
+        <p>
+          在你决定之前，请知道：<br />
+          一、你同意或不同意，都不影响你获得的任何帮助，现在和以后都不影响。<br />
+          二、放在网站上意味着任何人都能看到、可能被转发；我们会先给你看发布后的样子。<br />
+          三、你随时可以反悔，告诉我们后我们会尽快撤下，不需要说明理由。<br />
+          四、如果内容涉及未满十八岁的家庭成员，需要孩子本人和监护人都同意。
+        </p>
+        <p>同意人签字：＿＿＿＿＿＿　日期：＿＿＿＿＿＿　（未成年人监护人签字：＿＿＿＿＿＿）</p>
+      </blockquote>
+    </section>
+
+    <section class="doc-section" id="scope">
+      <h2><span class="sec-no">03 · 范围</span>适用范围与例外</h2>
+      <p>
+        <strong>适用：</strong>受助者故事、照片、可关联到个人的项目描述。
+        <strong>不适用：</strong>完全匿名化的统计数字与账目（如「资助 3 人」）——这些属于
+        <a href="/transparency/">信息公开</a>的义务范围，不需要逐一同意。
+      </p>
+      <p>
+        <strong>永久例外：</strong>寻亲个案的细节无论是否取得同意，一律不公开——当事人处境
+        可能随时间变化，这类信息的公开风险我们承担不起。详见<a href="/risks/#boundary">披露边界</a>。
+      </p>
+    </section>
+  </div>
+</ProductLayout>

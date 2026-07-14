@@ -1,0 +1,120 @@
+---
+import ProductLayout from "../../layouts/ProductLayout.astro";
+
+const SCHEDULE = [
+  {
+    doc: "季度账目汇总（PDF）",
+    cadence: "每季度结束后 30 天内",
+    first: "首批项目落地后的第一个完整季度",
+    status: "未到期",
+  },
+  {
+    doc: "年度总结（PDF）",
+    cadence: "每年一次",
+    first: "首个完整运作年度结束后",
+    status: "未到期",
+  },
+  {
+    doc: "监督简报",
+    cadence: "按期编号，不定期",
+    first: "第 001 期已发布",
+    status: "进行中",
+  },
+  {
+    doc: "登记证书原件",
+    cadence: "一次性，更新时同步",
+    first: "完成基金会法人登记后",
+    status: "规划中",
+  },
+  {
+    doc: "章程与制度文件",
+    cadence: "制定与修订时同步",
+    first: "随法人登记一并公开",
+    status: "规划中",
+  },
+  {
+    doc: "第三方审计报告",
+    cadence: "每年一次",
+    first: "完成登记并聘请会计师事务所后",
+    status: "规划中",
+  },
+];
+---
+
+<ProductLayout
+  title="文档中心 — airdb 基金会"
+  description="airdb 基金会文档中心：正式文件的发布时间表与按年归档。现在还没有可下载的文件——空格本身就是承诺。"
+  path="/documents/"
+>
+  <div class="shell page-hero">
+    <p class="notice">现在还没有可下载的正式文件 · 这一页先把空格摆出来，到期逐格填上</p>
+    <h1>文档中心</h1>
+    <p class="lede">
+      好的公开不是一堆新闻稿，而是一排可下载的原件。我们先公布发布时间表，
+      每类文件到期后按年归档在这里。缺格即失信，欢迎对照检查。
+    </p>
+    <nav class="toc" aria-label="本页目录">
+      <a href="#schedule">发布时间表</a>
+      <a href="#archive">按年归档</a>
+    </nav>
+  </div>
+
+  <div class="shell doc-body">
+    <section class="doc-section" id="schedule">
+      <h2><span class="sec-no">01 · 时间表</span>发布时间表</h2>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">文件</th>
+              <th scope="col">发布节奏</th>
+              <th scope="col">首次发布节点</th>
+              <th scope="col">状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SCHEDULE.map((s) => (
+              <tr>
+                <td>{s.doc}</td>
+                <td>{s.cadence}</td>
+                <td>{s.first}</td>
+                <td><span class:list={["pill", s.status === "进行中" && "pill-live"]}>{s.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="archive">
+      <h2><span class="sec-no">02 · 归档</span>按年归档</h2>
+      <p>每年一行，四类文件各一格。文件发布后，对应格子变成下载链接：</p>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">年度</th>
+              <th scope="col">季度账目</th>
+              <th scope="col">年度总结</th>
+              <th scope="col">审计报告</th>
+              <th scope="col">登记/制度文件</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026</td>
+              <td><span class="pill">未到期</span></td>
+              <td><span class="pill">未到期</span></td>
+              <td><span class="pill">规划中</span></td>
+              <td><span class="pill">规划中</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        如果到了时间表承诺的节点，对应格子仍然是空的，请写信问我们为什么：
+        <a href="mailto:info@airdb.com">info@airdb.com</a>。
+      </p>
+    </section>
+  </div>
+</ProductLayout>
