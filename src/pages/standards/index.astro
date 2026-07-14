@@ -1,0 +1,160 @@
+---
+import ProductLayout from "../../layouts/ProductLayout.astro";
+
+const BENCHMARKS = [
+  {
+    cat: "国内公众慈善",
+    name: "韩红爱心慈善基金会",
+    url: "https://www.hhax.org/",
+    learn: "年报与审计报告的颗粒度：固定资产逐台清查、投资理财明细全部纳入审计并常态化公示。",
+  },
+  {
+    cat: "国内公众慈善",
+    name: "中国红十字基金会",
+    url: "https://www.crcf.org.cn/",
+    learn: "披露制度的完备分类：机构年报、年检报告、审计报告、评估报告分列，公告公示覆盖资助名单与评审结果。",
+  },
+  {
+    cat: "海外公益",
+    name: "charity: water",
+    url: "https://www.charitywater.org/",
+    learn: "项目证据链：每个项目附照片与 GPS 坐标，捐赠人可以查到自己那笔钱对应的项目。",
+  },
+  {
+    cat: "海外公益",
+    name: "GiveDirectly",
+    url: "https://www.givedirectly.org/",
+    learn: "激进透明：受助人实名反馈流、负面结果同样公开、以独立研究证据说话。",
+  },
+  {
+    cat: "技术基金会",
+    name: "Linux 基金会",
+    url: "https://www.linuxfoundation.org/",
+    learn: "用数据讲影响力：项目数、贡献者数、培训人次，让中立与专业可以被量化检验。",
+  },
+  {
+    cat: "技术基金会",
+    name: "Apache 软件基金会",
+    url: "https://www.apache.org/",
+    learn: "治理文档化：「How the ASF Works」把运作方式写成公开文档，项目从孵化到毕业有明确标准。",
+  },
+];
+
+const DIMENSIONS = [
+  {
+    dim: "治理与身份",
+    desc: "谁在决策、如何决策、法律身份与制度文件是否公开可查。",
+    status: "规划中",
+  },
+  {
+    dim: "信息公开",
+    desc: "年报、账目、审计的披露类目与节奏，原件可下载、可追溯。",
+    status: "已有框架",
+  },
+  {
+    dim: "项目叙事与证据链",
+    desc: "立项书 → 执行进展 → 结项复盘的完整闭环，支出附凭证，故事不伤害受助人。",
+    status: "筹备中",
+  },
+  {
+    dim: "参与路径",
+    desc: "志愿者、机构协作、监督者各有清晰入口，不设门槛地欢迎检验。",
+    status: "已有",
+  },
+  {
+    dim: "公信力背书",
+    desc: "外部审计、评级认证、对质疑的公开回应机制。",
+    status: "规划中",
+  },
+  {
+    dim: "开源资助机制",
+    desc: "资助什么、怎么申请、如何评审、受助项目如何交代进展——借鉴技术基金会的孵化模式。",
+    status: "规划中",
+  },
+];
+---
+
+<ProductLayout
+  title="对标与标准 — airdb 基金会"
+  description="airdb 基金会公开自己的对标对象与检验标准：向国内外优秀公益组织与技术基金会看齐，欢迎按同样的标准监督我们。"
+  path="/standards/"
+>
+  <div class="shell page-hero">
+    <p class="notice">对标是承诺的一部分 · 本页随进展持续更新</p>
+    <h1>对标与标准</h1>
+    <p class="lede">
+      我们公开自己向谁看齐、按什么标准检验自己。这些机构的体量远大于我们，
+      对标的不是规模，而是做法——欢迎你用同样的标准来监督我们。
+    </p>
+    <nav class="toc" aria-label="本页目录">
+      <a href="#benchmarks">标杆机构</a>
+      <a href="#dimensions">检验标准</a>
+      <a href="#notes">说明</a>
+    </nav>
+  </div>
+
+  <div class="shell doc-body">
+    <section class="doc-section" id="benchmarks">
+      <h2><span class="sec-no">01 · 标杆</span>标杆机构</h2>
+      <p>六家机构，三个类别。每一家，我们都写清楚了要学它的哪一点：</p>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">类别</th>
+              <th scope="col">机构</th>
+              <th scope="col">我们学什么</th>
+            </tr>
+          </thead>
+          <tbody>
+            {BENCHMARKS.map((b) => (
+              <tr>
+                <td>{b.cat}</td>
+                <td><a href={b.url} target="_blank" rel="noopener noreferrer">{b.name}</a></td>
+                <td>{b.learn}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="dimensions">
+      <h2><span class="sec-no">02 · 标准</span>检验标准</h2>
+      <p>
+        我们用六个维度检验自己，也请你用它们检验我们。状态栏是我们的自评，
+        会随进展更新：
+      </p>
+      <div class="table-scroll">
+        <table class="doc-table">
+          <thead>
+            <tr>
+              <th scope="col">维度</th>
+              <th scope="col">说明</th>
+              <th scope="col">现状自评</th>
+            </tr>
+          </thead>
+          <tbody>
+            {DIMENSIONS.map((d) => (
+              <tr>
+                <td>{d.dim}</td>
+                <td>{d.desc}</td>
+                <td><span class="pill">{d.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="doc-section" id="notes">
+      <h2><span class="sec-no">03 · 说明</span>说明</h2>
+      <p>
+        对标不是背书：以上机构与我们没有任何关联或合作关系，列出它们只代表我们认可其做法。
+        自评状态由我们自己给出，最终以<a href="/transparency/">信息公开页</a>的实际披露为准。
+        如果你认为某项自评过于乐观，请写信给
+        <a href="mailto:info@airdb.com">info@airdb.com</a>——这正是这一页存在的意义。
+      </p>
+    </section>
+  </div>
+</ProductLayout>
