@@ -1,7 +1,8 @@
 {
-  "name": "AirDB",
-  "short_name": "AirDB",
-  "description": "Enterprise data platform: cloud database tools, industry data APIs, and agriculture analytics SaaS.",
+  "name": "airdb 基金会",
+  "short_name": "airdb基金会",
+  "description": "airdb 基金会专注人道主义救援、寻亲回家、教育支持与开源科技资助，从自有基金起步，项目公开、成本公开。",
+  "lang": "zh-CN",
   "start_url": "/",
   "display": "browser",
   "background_color": "#faf6ee",
