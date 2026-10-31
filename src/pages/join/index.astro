@@ -1,84 +1,26 @@
 ---
 import ProductLayout from "../../layouts/ProductLayout.astro";
+const emailHref = "mailto:info@airdb.com?subject=" + encodeURIComponent("参与 airdb 基金会") + "&body=" + encodeURIComponent("称呼：\n参与方式（志愿者 / 公益协作 / 监督）：\n所在组织（可选）：\n想说的话：\n");
 ---
 
 <ProductLayout
   title="参与我们 — airdb 基金会"
-  description="参与 airdb 基金会：成为志愿者、建立公益协作，或以监督者的身份关注我们。留下联系方式，我们会尽快回复。"
+  description="通过邮件参与 airdb 基金会：志愿服务、公益协作与公众监督。"
   path="/join/"
 >
   <div class="shell page-hero">
-    <p class="notice">基金会处于第一阶段 · 现阶段不对外募集资金，参与以志愿协作与监督为主</p>
+    <p class="notice">筹备阶段 · 现阶段不对外募集资金，参与以志愿协作与监督为主</p>
     <h1>参与我们</h1>
-    <p class="lede">
-      告诉我们你是谁、想以什么方式参与。
-      无论是投入时间的志愿者、寻求协作的公益组织，还是想监督我们的普通人，都欢迎。
-    </p>
+    <p class="lede">无论是投入时间的志愿者、寻求协作的公益组织，还是想监督我们的普通人，都欢迎通过邮件联系。</p>
   </div>
-
-  <div class="shell form-wrap">
-    <form
-      name="join-us"
-      method="POST"
-      action="/join/thanks/"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      class="form-grid"
-    >
-      <input type="hidden" name="form-name" value="join-us" />
-      <p hidden aria-hidden="true">
-        <label>请勿填写此字段：<input name="bot-field" /></label>
-      </p>
-
-      <div class="field">
-        <label for="name">称呼 <span class="req">*</span></label>
-        <input id="name" name="name" type="text" required autocomplete="name" />
-      </div>
-
-      <div class="field">
-        <label for="email">邮箱 <span class="req">*</span></label>
-        <input id="email" name="email" type="email" required autocomplete="email" />
-        <p class="hint">我们的回复会发到这里。</p>
-      </div>
-
-      <div class="field">
-        <label for="org">所在组织（可选）</label>
-        <input id="org" name="org" type="text" autocomplete="organization" />
-      </div>
-
-      <div class="field">
-        <label for="role">你想以什么方式参与 <span class="req">*</span></label>
-        <select id="role" name="role" required>
-          <option value="volunteer">志愿者（时间与技能）</option>
-          <option value="partner">公益组织 / 机构协作</option>
-          <option value="supervisor">监督者 / 关注进展</option>
-          <option value="other">其他（在下方说明）</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="message">想说的话</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="例如：我是一名在校大学生，想参与寻亲信息整理的志愿工作，每周可投入 4 小时。"
-        ></textarea>
-      </div>
-
-      <button class="btn btn-solid" type="submit">提交</button>
-      <p class="hint">
-        更习惯写邮件？请发 <a href="mailto:info@airdb.com">info@airdb.com</a>。
-        你的联系方式仅用于回复，不会对外提供。
-      </p>
-    </form>
+  <div class="shell doc-body">
+    <section class="doc-section" aria-labelledby="contact-title">
+      <h2 id="contact-title">通过邮件联系</h2>
+      <p>请发送至 <a href="mailto:info@airdb.com">info@airdb.com</a>，说明你的称呼、参与方式，以及想说的话；所在组织可选填。</p>
+      <p>请勿发送身份证件、受助者资料或其他敏感个人信息。</p>
+      <p><a class="btn btn-solid" href={emailHref}>打开邮件应用</a></p>
+      <p>按钮会打开你的邮件应用，并填入收件人和内容模板。请检查内容后自行发送；打开邮件应用不代表邮件已发送或我们已收到。</p>
+      <p>如果没有打开邮件应用，请复制邮箱地址，在你常用的邮箱中撰写邮件。本页面不收集或保存申请信息。</p>
+    </section>
   </div>
-
-  <script>
-    // Pre-select the role from ?role= links elsewhere on the site
-    const role = new URLSearchParams(location.search).get("role");
-    const select = document.getElementById("role") as HTMLSelectElement | null;
-    if (role && select && [...select.options].some((o) => o.value === role)) {
-      select.value = role;
-    }
-  </script>
 </ProductLayout>

@@ -32,7 +32,7 @@ const ISSUES = [
   <div class="shell doc-body">
     <section class="doc-section" id="index">
       <h2><span class="sec-no">目录</span>简报目录</h2>
-      <div class="table-scroll">
+      <div class="table-scroll" tabindex="0" role="region" aria-label="目录简报目录（可横向滚动）">
         <table class="doc-table">
           <thead>
             <tr><th scope="col">期号</th><th scope="col">日期</th><th scope="col">核查主题</th><th scope="col">状态</th></tr>
@@ -68,7 +68,7 @@ const ISSUES = [
       </p>
 
       <h3>本期发现的问题与整改</h3>
-      <div class="table-scroll">
+      <div class="table-scroll" tabindex="0" role="region" aria-label="第 001 期 · 2026-07-14筹备期自查：披露框架与网站内容核查（可横向滚动）">
         <table class="doc-table">
           <thead>
             <tr><th scope="col">发现</th><th scope="col">性质</th><th scope="col">整改</th></tr>
@@ -82,7 +82,7 @@ const ISSUES = [
             <tr>
               <td>「参与我们」页的表单在当前托管环境下提交不可达，填写内容不会被送出</td>
               <td>功能缺陷</td>
-              <td>整改中；页面已注明邮件通道（info@airdb.com）可正常使用，修复完成后在下一期简报确认</td>
+              <td>2026-10-31 更新：已移除无法接收的表单，改为邮件联系入口；用户须在邮件应用中自行发送，页面不再显示「已收到」确认。</td>
             </tr>
             <tr>
               <td>法律身份的表述此前未在站内正面说明</td>

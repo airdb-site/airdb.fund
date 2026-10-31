@@ -4,8 +4,8 @@ import ProductLayout from "../layouts/ProductLayout.astro";
 
 const STATS = [
   { value: "4", label: "核心项目方向" },
-  { value: "100%", label: "项目与成本公开" },
-  { value: "季度", label: "账目披露频率" },
+  { value: "100%", label: "项目与成本公开目标" },
+  { value: "季度", label: "计划账目披露频率" },
   { value: "第 1 阶段", label: "自有基金起步" },
 ];
 
@@ -18,7 +18,7 @@ const PROGRAMS = [
   {
     no: "02",
     title: "寻亲回家",
-    copy: "支持失散家庭的寻人与团聚，与「宝贝回家」等公益寻亲平台协作，提供线索整理、信息扩散与必要的经费支持。",
+    copy: "支持失散家庭的寻人与团聚，计划与公益寻亲平台探索协作，提供线索整理、信息扩散与必要的经费支持。",
   },
   {
     no: "03",
@@ -123,7 +123,7 @@ const TABS = [
           <a class="btn btn-ghost" href="/transparency/">查看公开账目</a>
         </div>
         <p class="hero-note reveal">
-          现阶段不对外募集资金 · 账目按季度公开 · <span class="mono">airdb.fund</span>
+          筹备阶段 · 不对外募集资金 · 当前账目为示例 · <span class="mono">airdb.fund</span>
         </p>
       </div>
 
@@ -134,13 +134,12 @@ const TABS = [
         </figcaption>
         <pre class="mono"><code><span class="t-dim"># 2026 年第二季度 · 支出摘要（示例数据）</span>
 
-<span class="t-key">教育支持 · 大学助学</span>   <span class="t-num">¥ 12,000.00</span>  <span class="t-str">已拨付 3 人</span>
+<span class="t-key">教育支持 · 大学助学</span>   <span class="t-num">¥  8,000.00</span>  <span class="t-str">示例：2 人</span>
 <span class="t-key">救援物资 · 应急储备</span>   <span class="t-num">¥  8,450.00</span>  <span class="t-str">已入库</span>
 <span class="t-key">寻亲协作 · 信息支持</span>   <span class="t-num">¥  2,300.00</span>  <span class="t-str">进行中</span>
-<span class="t-key">开源资助 · AI 项目</span>   <span class="t-num">¥  5,000.00</span>  <span class="t-str">已到账</span>
 <span class="t-key">运营成本 · 全部公开</span>   <span class="t-num">¥  1,120.00</span>  <span class="t-str">明细可查</span>
 
-<span class="t-dim">每一笔支出附凭证与去向，正式账目以信息公开页为准。</span></code></pre>
+<span class="t-dim">以上仅为格式示例；正式数据尚待披露。</span></code></pre>
       </figure>
     </div>
 
@@ -213,9 +212,9 @@ const TABS = [
 <span class="t-key">2026-05-12</span>  助学金拨付 · 学生 B   <span class="t-num">¥ 4,000.00</span>
 <span class="t-key">2026-06-03</span>  救援物资采购          <span class="t-num">¥ 8,450.00</span>
 <span class="t-key">2026-06-20</span>  寻亲信息推广          <span class="t-num">¥ 2,300.00</span>
-<span class="t-key">2026-06-28</span>  开源项目资助 · AI     <span class="t-num">¥ 5,000.00</span>
+<span class="t-key">2026-06-30</span>  运营成本              <span class="t-num">¥ 1,120.00</span>
 
-<span class="t-dim">凭证编号与去向见信息公开页。</span></code></pre>
+<span class="t-dim">以上仅为格式示例，不代表实际支出或凭证。</span></code></pre>
         <pre class="mono code-sample" role="tabpanel" id="panel-income" aria-labelledby="tab-income" tabindex="0" hidden><code><span class="t-dim"># 资金投入（示例数据）</span>
 
 <span class="t-key">2026-04-01</span>  自有基金注入 · 第二季度  <span class="t-num">¥ 30,000.00</span>
@@ -224,7 +223,7 @@ const TABS = [
 不接受外部捐赠，不对外募集。</span></code></pre>
         <pre class="mono code-sample" role="tabpanel" id="panel-progress" aria-labelledby="tab-progress" tabindex="0" hidden><code><span class="t-dim"># 项目进度（示例数据）</span>
 
-<span class="t-key">教育支持</span>  3 名大学生已完成资助对接  <span class="t-str">进行中</span>
+<span class="t-key">教育支持</span>  2 名大学生已完成资助对接  <span class="t-str">进行中</span>
 <span class="t-key">救援储备</span>  首批应急物资完成入库      <span class="t-str">已完成</span>
 <span class="t-key">寻亲协作</span>  与寻亲平台建立协作流程    <span class="t-str">进行中</span>
 <span class="t-key">开源科技</span>  首个 AI 开源项目完成资助  <span class="t-str">进行中</span></code></pre>

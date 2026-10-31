@@ -86,7 +86,7 @@ main:focus { outline: none; }
 }
 .skip-link:focus { left: 8px; }
 
-:is(a, button):focus-visible {
+:is(a, button, .table-scroll):focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 2px;
 }
@@ -171,7 +171,7 @@ main:focus { outline: none; }
   .topnav {
     display: none;
     position: absolute;
-    top: 63px; left: -24px; right: -24px;
+    top: 100%; left: 0; right: 0;
     flex-direction: column;
     gap: 0;
     margin: 0;
@@ -358,7 +358,7 @@ section { padding: 96px 0; }
 .footer-brand .wordmark em { color: var(--phosphor); }
 .footer-brand p { font-size: 0.9rem; max-width: 30em; }
 .footer-brand a { color: var(--phosphor); }
-.footer-col h3 {
+.footer-col h2 {
   font-family: var(--mono);
   font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--moss); margin-bottom: 16px; font-weight: 500;
@@ -410,7 +410,7 @@ section { padding: 96px 0; }
   margin-bottom: 20px;
 }
 
-.doc-body { padding: 56px 0 96px; }
+.doc-body { padding: 56px 24px 96px; }
 .doc-section { max-width: 720px; padding: 0 0 64px; }
 .doc-section:last-child { padding-bottom: 0; }
 .doc-section h2 {
@@ -479,7 +479,7 @@ section { padding: 96px 0; }
 .req { color: var(--ochre); }
 
 /* 404 */
-.notfound { padding: 110px 0 130px; text-align: center; }
+.notfound { padding: 110px 24px 130px; text-align: center; }
 .notfound .status-line { font-family: var(--mono); font-size: 0.85rem; color: var(--ochre); margin-bottom: 18px; }
 .notfound h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); margin-bottom: 16px; }
 .notfound p { color: var(--ink-soft); max-width: 40em; margin: 0 auto 32px; }
@@ -519,4 +519,17 @@ section { padding: 96px 0; }
   .cap-grid, .docs-grid { grid-template-columns: 1fr; }
   .stat-strip { grid-template-columns: 1fr 1fr; }
   section { padding: 72px 0; }
+}
+
+.nav-join { display: none; }
+@media (max-width: 560px) { .topnav .nav-join { display: block; } }
+
+/* Keep anchor headings below the sticky header and preserve narrow-screen spacing. */
+[id] { scroll-margin-top: 88px; }
+@media (max-width: 560px) {
+  .topbar-inner { gap: 12px; height: auto; min-height: 64px; flex-wrap: wrap; padding-block: 10px; }
+  .topbar-actions { display: none; }
+  .topbar .wordmark { font-size: 1.2rem; white-space: nowrap; }
+  .code-tabs button { padding-inline: 12px; }
+  .footer-legal { flex-wrap: wrap; gap: 12px; }
 }

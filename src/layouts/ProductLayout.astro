@@ -79,6 +79,7 @@ const jsonLd = JSON.stringify({
         </a>
         <nav class="topnav" id="site-nav" aria-label="主导航">
           {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
+          <a class="nav-join" href="/join/">参与我们</a>
         </nav>
         <button class="nav-toggle mono" aria-expanded="false" aria-controls="site-nav">菜单</button>
         <div class="topbar-actions">
@@ -101,14 +102,14 @@ const jsonLd = JSON.stringify({
           </p>
         </div>
         <div class="footer-col">
-          <h3>项目</h3>
+          <h2>项目</h2>
           <a href="/#programs">人道主义救援</a>
           <a href="/#programs">寻亲回家</a>
           <a href="/#programs">教育支持</a>
           <a href="/#programs">开源科技</a>
         </div>
         <div class="footer-col">
-          <h3>公开</h3>
+          <h2>公开</h2>
           <a href="/transparency/">信息公开</a>
           <a href="/transparency/#ledger">公开账目</a>
           <a href="/transparency/#projects">项目档案</a>
@@ -120,7 +121,7 @@ const jsonLd = JSON.stringify({
           <a href="/consent/">同意机制</a>
         </div>
         <div class="footer-col">
-          <h3>参与</h3>
+          <h2>参与</h2>
           <a href="/join/">成为志愿者</a>
           <a href="/join/">公益伙伴合作</a>
           <a href="mailto:info@airdb.com">联系我们</a>
@@ -135,19 +136,47 @@ const jsonLd = JSON.stringify({
     <script>
       const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
       const bar = document.getElementById("topbar");
+      const nav = document.getElementById("site-nav");
+      const mobile = window.matchMedia("(max-width: 960px)");
+      function setOpen(open: boolean) {
+        bar?.classList.toggle("nav-open", open);
+        toggle?.setAttribute("aria-expanded", String(open));
+        if (toggle) toggle.textContent = open ? "关闭" : "菜单";
+      }
       toggle?.addEventListener("click", () => {
-        const open = bar?.classList.toggle("nav-open") ?? false;
-        toggle.setAttribute("aria-expanded", String(open));
-        toggle.textContent = open ? "关闭" : "菜单";
+        const open = toggle.getAttribute("aria-expanded") !== "true";
+        setOpen(open);
+        if (open) nav?.querySelector<HTMLAnchorElement>("a")?.focus();
       });
-      // Close the mobile panel after navigating to an anchor
-      document.querySelectorAll("#site-nav a").forEach((a) =>
-        a.addEventListener("click", () => {
-          bar?.classList.remove("nav-open");
-          toggle?.setAttribute("aria-expanded", "false");
-          if (toggle) toggle.textContent = "菜单";
-        })
-      );
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && toggle?.getAttribute("aria-expanded") === "true") {
+          setOpen(false);
+          toggle.focus();
+        }
+      });
+      nav?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (!mobile.matches) return;
+          setOpen(false);
+          const destination = new URL(link.href);
+          if (destination.pathname === location.pathname && destination.hash) {
+            const target = document.getElementById(destination.hash.slice(1));
+            target?.setAttribute("tabindex", "-1");
+            target?.focus({ preventScroll: true });
+          }
+        });
+      });
+      bar?.addEventListener("focusout", (event) => {
+        if (event.relatedTarget instanceof Node && !bar.contains(event.relatedTarget)) setOpen(false);
+      });
+      document.addEventListener("click", (event) => {
+        if (event.target instanceof Node && !bar?.contains(event.target)) setOpen(false);
+      });
+      mobile.addEventListener("change", () => {
+        const focusWasInNav = nav?.contains(document.activeElement);
+        setOpen(false);
+        if (mobile.matches && focusWasInNav) toggle?.focus();
+      });
     </script>
   </body>
 </html>
